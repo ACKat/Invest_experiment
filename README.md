@@ -10,15 +10,12 @@ The apps and pages of the experiment are sequenced as follows:
 
 2. InvestTask
   - Initial_Invest_Decision
-  - Invest_Details
   - Invest_Continuation_Decision
   - Confidence
 
-3. Justification
+3. Questionnaire
   - Justification
-
-4. Demographics
   - Demographics
 
-5. EndPage
+4. EndPage
   - EndPage
