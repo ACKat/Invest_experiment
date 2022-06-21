@@ -1,0 +1,53 @@
+To do:
+
+# INSTRUCTIONS
+Detailed instructions 
+Informed consent
+Engaging intro 
+
+# INVEST TASK
+Make pages appear only if consent is positive
+Timing
+Create initial investment stage code 
+Create initial investment stage page
+Style buttons and their content
+Add a next button
+Create the decision page
+Make sure that the first and last click and number of button clicks per piece of information is being stored 
+(and maybe time)
+Add css and js files to enforce focus
+
+# QUESTIONNAIRE
+Fix the prolific link
+
+# OTHER
+Check if the data is being stored
+Go over scripts and through unused code
+
+# ASK ALEJANDRO
+Run a pilot?
+Check the whole experiment 
+When to Use JavaScript var? If you want your code to run in older browser, you must use var. 
+(maybe replace let with var??)
+
+Things I can use from CSS:
+
+padding: property to increase the margin around the text in the boxes
+margin: to increase the margin around the boxes
+
+To do:
+1) Function that creates project details -
+2) After form validation in the Initial_investment page add a before_next_page(player) function -
+to allocate the right info in the right spots
+3) Use vars_for_template to present the informed spots in the Project_infomation page and 
+save the attention data from there with form_model form_fields method -
+4) Add the is_displayed to show this page only if Project A or Project B was selected in the first decision -
+5) Add the is_displayed to all pages after except the end page -
+6) Add an if statement in the results depending on whether they choose to make the initial investment or not -
+7) Add timers in every page
+8) Require focus in every page 
+9) Style pages
+10) Make sure everything is saved correctly
+11) Write intro, instructions and consent
+12) Add the current endowment - 
+13) Add the rest of the variables of interest here in Participant fields

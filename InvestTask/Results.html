@@ -1,0 +1,10 @@
+{{ block content }}
+
+    {{ if player.initial_invest == 'Project A' or player.initial_invest == 'Project B' }}
+        {{ payoff }}
+    {{ else }}
+        You decided to keep your initial endowment. Your payoff is $ {{ C.initial_endowment }}.
+    {{ endif }}
+
+    {{ next_button }}
+{{ endblock }}

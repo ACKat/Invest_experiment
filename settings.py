@@ -6,6 +6,35 @@ SESSION_CONFIGS = [
     #     app_sequence=['public_goods'],
     #     num_demo_participants=3,
     # ),
+
+    dict(
+        name='InvestTask',
+        app_sequence=['InvestTask'],
+        num_demo_participants=8,
+        iTimeOut=0,
+        bRequireFS=True,
+        bCheckFocus=True,
+    ),
+
+    dict(
+        name='Questionnaire',
+        app_sequence=['Questionnaire'],
+        num_demo_participants=8,
+    ),
+
+    dict(
+        name='Invest_experiment',
+        app_sequence=['Instructions', 'InvestTask', 'Questionnaire'],
+        num_demo_participants=8,
+    ),   
+
+    
+    dict(
+        name='Invest_experiment_NA',
+        app_sequence=['Instructions', 'InvestTask_NA', 'Questionnaire', 'EndPage'],
+        num_demo_participants=3,
+    ),   
+
 ]
 
 # if you set a property in SESSION_CONFIG_DEFAULTS, it will be inherited by all configs
@@ -17,7 +46,11 @@ SESSION_CONFIG_DEFAULTS = dict(
     real_world_currency_per_point=1.00, participation_fee=0.00, doc=""
 )
 
-PARTICIPANT_FIELDS = []
+PARTICIPANT_FIELDS = [ # Add the rest of the variables of interest here!!!!
+    'ProlificID',
+    'consent',
+    ]
+
 SESSION_FIELDS = []
 
 # ISO-639 code

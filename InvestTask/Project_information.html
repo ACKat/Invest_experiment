@@ -1,0 +1,129 @@
+{% block app_scripts %}
+    <script src="{% static 'global/VT_functionality.js' %}"></script> 
+    <script src="{% static 'global/FriendlyChecks.js' %}"></script> 
+    <script>
+        const bRequireFS    = js_vars.bRequireFS;
+        const bCheckFocus   = js_vars.bCheckFocus;
+        const defaultPixel  = js_vars.dPixelRatio;
+        var TBlur           = new Date().getTime();
+        var TFocus          = new Date().getTime();
+        let tStart,tNow;
+
+        // When page is loaded
+
+        document.addEventListener("DOMContentLoaded", function() {
+            let body = document.getElementById('game-container');
+            InitializeFriendlyChecks(body, bRequireFS,bCheckFocus);             // Initialize FS and focus checks
+        })
+
+        document.addEventListener("DOMContentLoaded", function() {
+            let body = document.getElementById('game-container');
+            tStart          = new Date().getTime();
+            InitializeVT(body);                                                 // Initialize visual tracing
+            hideEverything();                                                   // Hide Everything at the beginning 
+            ConvertButtons2VT('r0', sActivation = 'mousedown', 'r0');          // Mouseover current endowment                                                   
+            ConvertButtons2VT('r1', sActivation = 'mousedown', 'r1');          // Mouseover for sunk-cost
+            ConvertButtons2VT('r2', sActivation = 'mousedown', 'r2');          // Mouseover for revenue gained
+            ConvertButtons2VT('r3', sActivation = 'mousedown', 'r3');          // Mouseover for probability of chosen
+            ConvertButtons2VT('r4', sActivation = 'mousedown', 'r4');          // Mouseover for probability of unchosen
+            ConvertButtons2VT('r5', sActivation = 'mousedown', 'r5');          // Mouseover for potential revenue
+            ConvertButtons2VT('r6', sActivation = 'mousedown', 'r6');          // Mouseover for additional cost
+            resizeButtons();                                                   // Resize the text of all overflown buttons
+        });
+
+        function resizeButtons() {
+            lButtons = document.getElementsByClassName('game-btn');
+            for (let i=0; i<lButtons.length; i++) {
+                adjustText(lButtons[i]);
+            };
+        };
+
+        function endTurn(iVal) {
+            tNow        = new Date().getTime();
+            EndButton   = document.getElementById('end-btn');
+            InputDec    = document.getElementById('iDec');
+            InputRT     = document.getElementById('dRT');
+            InputRT.value   = tNow - tStart;
+            InputDec.value  = iVal;
+            EndButton.click()
+        };
+
+        function adjustText(elem) {
+            let ratioWidth = elem.clientWidth/elem.scrollWidth;
+            let ratioHeight = elem.clientHeight/elem.scrollHeight;
+            // Set initial scale as 100%
+            if (ratioWidth<1 || ratioHeight<1) {
+                let ratio = Math.floor(100*Math.min(ratioWidth,ratioHeight))-1
+                elem.style.fontSize = `${ratio}%`;
+                console.log(`Resized ${elem.id} to ${ratio}%`);
+            };                                  
+        };
+    </script>
+{% endblock %}
+
+{% block app_styles %}
+    <link href="{% static 'global/VT_functionality.css' %}" rel="stylesheet">
+    <link href="{% static 'global/FriendlyChecks.css' %}" rel="stylesheet">
+{% endblock %} 
+
+{% block content %}
+    <div id="game-container">
+        
+        <!-- initial endowment-->
+        <div style = "position:relative; right:150px; bottom:50px" class="info"> Your initial endowment: £{{C.initial_endowment}}</div> 
+        <div class="break"> </div>
+
+        <!--current endowment-->
+        <button  type="button" class="game-btn btn-outcome r0" id="ce"> 
+            <div class="btn-content"> £{{ current_endowment }} </div>
+            <div class="btn-hidden"> Current endowment </div>
+        </button> 
+        <div class="break"> </div>
+
+        <!--sunk-cost-->
+        <button type="button" class="game-btn btn-outcome r1" id="sc"> 
+            <div class="btn-content"> £{{ sunk_cost }} </div>
+            <div class="btn-hidden"> Initial investment </div>
+        </button> 
+        <div class="break"> </div>
+
+        <!--revenue gained-->
+        <button  type="button" class="game-btn btn-outcome r2" id="rg"> 
+            <div class="btn-content"> £{{ C.revenue_gained }} </div>
+            <div class="btn-hidden"> Revenue gained </div>
+        </button>
+        <div class="break"> </div>
+
+        <!--prob_success_chosen-->
+        <button  type="button" class="game-btn btn-outcome r3" id="pc"> 
+            <div class="btn-content"> £{{ prob_success_chosen }} </div>
+            <div class="btn-hidden"> Probability of success of <br> chosen project </div>
+        </button>
+        <div class="break"> </div>
+
+        <!--prob_success_unchosen-->
+        <button  type="button" class="game-btn btn-outcome r4" id="pu"> 
+            <div class="btn-content"> £{{ prob_success_unchosen }} </div>
+            <div class="btn-hidden">  Probability of success of <br> unchosen project </div>
+        </button>
+        <div class="break"> </div>
+
+         <!--additional_revenue_if_successful -->
+        <button type="button" class="game-btn btn-outcome r5" id="ar"> 
+            <div class="btn-content"> £{{ C.additional_revenue_if_successful  }} </div>
+            <div class="btn-hidden"> Additional revenue <br> if project successful  </div>
+        </button>
+        <div class="break"> </div>
+        
+        <!--additional_cost -->
+        <button type="button" class="game-btn btn-outcome r6" id="ac"> 
+            <div class="btn-content"> £{{ C.additional_cost }} </div>
+            <div class="btn-hidden"> Additional investment </div>
+        </button>
+        <div class="break"> </div>
+
+
+    </div>
+
+{% next_button %}   
+{% endblock %}

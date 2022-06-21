@@ -1,0 +1,89 @@
+{{ block title }}
+    Stage 2: Project continuation
+{{ endblock }}
+{{ block content }}
+
+    <!-- initial endowment-->
+    <div > Your initial endowment: £{{ C.initial_endowment }}</div> 
+    <div class="break"> </div>
+    
+    <!-- current balance-->
+    <div > Your current balance: £{{ current_balance }}</div> 
+    <div class="break"> </div>
+    <br>
+    <table style="width:100%">
+        <tr> 
+            <th> </th>
+            <th> Selected project: 
+                {{ if player.project == 'Project A' }} 
+                    Project A
+                {{ else }}
+                    Project B
+                {{ endif }}
+            </th> 
+            <th> Unselected project: 
+                {{ if player.project == 'Project A' }} 
+                    Project B
+                {{ else }}
+                    Project A
+                {{ endif }} 
+            </th>
+        </tr>
+        <tr>
+            <th> 
+                Initial investment cost
+            </th>
+            <td> 
+                {{ sunk_cost }}
+            </td>
+            <td> </td>
+        </tr>
+        <tr>
+            <th>
+                Revenue buffer
+            </th>
+            <td>
+                {{ C.revenue_buffer }}
+            </td>
+            <td> </td>
+        </tr>
+        <tr>
+            <th>
+                Probability of project success
+            </th>
+            <td>
+                {{ prob_success_chosen }}
+            </td>
+            <td>
+                {{ prob_success_unchosen }}
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Additional investment cost 
+            </th>
+            <td>
+                {{ C.additional_cost }}
+            </td>
+            <td> </td>
+        </tr>
+        <tr>
+            <th>
+                Additional revenue if project successful
+            </th>
+            <td>
+                {{ C.additional_revenue_if_success }}
+            </td>
+            <td> </td>
+        </tr>
+    </table>
+    <br>
+    <br>
+    <p>
+        {{ formfields }}
+    </p>
+
+
+    {{ next_button }}
+
+{{ endblock }}

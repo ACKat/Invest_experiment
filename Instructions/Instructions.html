@@ -1,0 +1,60 @@
+{{ block title }}
+    Instructions
+{{ endblock }}
+
+{{ block content }}
+
+    <h5> The Experiment </h5>
+    <p>
+        <h6> Stage 1: Project selection </h6> 
+        You will be provided with an initial endowment and presented with two alternative projects. You will be asked 
+        to choose the project you would like to invest in. At this stage you are basically making a <strong> random choice </strong>,
+        as all the relevant information regarding costs and potential revenues will become available to you at the following stage. 
+    </p>
+
+    <p>
+        <h6> Stage 2: Project continuation </h6> 
+        At this stage, you will be informed about the investment cost you have incurred and the revenue gained as a result of 
+        your initial investment choice. Moreover, you will be informed about the estimated probablity of success of your chosen 
+        project. There is a chance that information regarding the probablity of success of the forgone project option will become
+        also available. You will be asked to decide whether you want to finalize your chosen project by making 
+        an additional investment or to abandon it and keep your endowment as it has been shaped up to that point.
+    </p>
+
+    <h5> Project details </h5>
+    <p> 
+        Your initial endowment is <strong> $ 10 </strong>. 
+        <br>
+        The <strong> intial investment cost can be either high or low </strong> and may exceed your initial endowment.
+        However, the <strong> revenue buffer </strong> will guarantee that <strong> under no circumstances will you 
+        end up with a negative balance </strong>. Its distribution is the same for both projects and places
+        a 50% probability at each value. Regarding the probability of success, it may take two equally likely values: 
+        <strong> 25% or 75% </strong>.
+    </p>
+
+    <h5> Your payoff </h5>
+    <p>
+        <h6> If you choose to adandon the project: </h6> 
+        <p>
+            Payoff = initial endowment - initial investment cost + revenue buffer 
+        </p>
+        <br>
+        <h6>If you choose to carry on with the project: </h6>
+        <p> 
+            Payoff = initial endowment - initial investment cost + revenue buffer - additional investment cost +
+            probability of sucess * revenue 
+        </p>
+        <br>
+        <p>
+        You will be informed about the outcome of your investment right after making your choice at 
+        Stage 2. After the required sample is gathered, 10 participants will be payed their payoff in addition to their 
+        participation fee.<br>
+        <br>
+        Chances are high, so make sure your decision at the second stage represents your true preferences! 
+        </p>
+
+        <p> Press "Next" to start the experiment! </p>
+
+    {{ next_button }}
+
+{{ endblock }}
