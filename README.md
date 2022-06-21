@@ -5,13 +5,13 @@ The apps and pages of the experiment are sequenced as follows:
 
 1. Intructions: 
  - Introduction
- - ConsentForm
+ - Consent
  - Instructions
 
 2. InvestTask
-  - Initial_Invest_Decision
-  - Invest_Continuation_Decision
-  - Confidence
+  - Project_selection
+  - Project_continuation
+  - Results
 
 3. Questionnaire
   - Justification
